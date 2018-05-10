@@ -1,54 +1,92 @@
-//index.js
 //获取应用实例
 const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    productList: [
+      {
+        name: '产品一',
+        code: 100001,
+        amount: 0
+      },
+      {
+        name: '产品二',
+        code: 100002,
+        amount: 5
+      },
+      {
+        name: '产品三',
+        code: 300001,
+        amount: 10
+      }
+    ]
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
+
+  onLoad: function () {
+    
+  },
+
+  /**
+   * 显示删除按钮
+   */
+  showDeleteButton: function (e) {
+    let productIndex = e.currentTarget.dataset.productindex
+    this.setXmove(productIndex, -65)
+  },
+
+  /**
+   * 隐藏删除按钮
+   */
+  hideDeleteButton: function (e) {
+    let productIndex = e.currentTarget.dataset.productindex
+
+    this.setXmove(productIndex, 0)
+  },
+
+  /**
+   * 设置movable-view位移
+   */
+  setXmove: function (productIndex, xmove) {
+    let productList = this.data.productList
+    productList[productIndex].xmove = xmove
+
+    this.setData({
+      productList: productList
     })
   },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
+
+  /**
+   * 处理movable-view移动事件
+   */
+  handleMovableChange: function (e) {
+    if (e.detail.source === 'friction') {
+      if (e.detail.x < -30) {
+        this.showDeleteButton(e)
+      } else {
+        this.hideDeleteButton(e)
       }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
+    } else if (e.detail.source === 'out-of-bounds' && e.detail.x === 0) {
+      this.hideDeleteButton(e)
     }
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
+
+  /**
+   * 删除产品
+   */
+  handleDeleteProduct: function (e) {
+    let productIndex = e.currentTarget.dataset.productindex
+    let productList = this.data.productList
+
+    productList.splice(productIndex, 1)
+
     this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+      productList: productList
     })
+    if (productList[productIndex]) {
+      this.setXmove(productIndex, 0)
+    }
   }
 })

@@ -1,13 +1,31 @@
-<!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view class="product-list">
+    <view class="product-item" wx:for="{{productList}}" wx:for-item="product" wx:for-index="index" wx:key="index">
+      <movable-area>
+        <movable-view out-of-bounds="true" direction="horizontal" x="{{product.xmove}}" 
+          inertia="true" 
+          data-productIndex="{{index}}"
+          bindchange="handleMovableChange">
+          <view class="product-item-movable">
+            <image class="product-delete-icon" 
+              src="../../images/icon-delete.png" 
+              data-productIndex="{{index}}"
+              bindtap="showDeleteButton"></image>
+            <view class="product-movable-item">
+              <view class="product-movable-item-name">{{product.name}}</view>
+              <view class="product-movable-item-code">{{product.code}}</view>
+            </view>
+            <view class="product-movable-item product-movable-item-amount">
+              <input type="number" class="product-movable-input" 
+                value="{{product.amount}}"
+                data-productIndex="{{index}}"
+                bindinput="handelInput" maxlength="4"/>
+              <text>万</text>
+            </view>
+          </view>
+        </movable-view>
+      </movable-area>
+      <view class="delete-btn" data-productIndex="{{index}}" bindtap="handleDeleteProduct">删除</view>
+    </view>
   </view>
 </view>
