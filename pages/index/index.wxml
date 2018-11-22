@@ -3,12 +3,13 @@
     <view class="product-item" wx:for="{{productList}}" wx:for-item="product" wx:for-index="index" wx:key="index">
       <movable-area>
         <movable-view out-of-bounds="true" direction="horizontal" x="{{product.xmove}}" 
-          inertia="true" 
+          inertia="true"
           data-productIndex="{{index}}"
+          catchtouchend="handleTouchEnd"
           bindchange="handleMovableChange">
           <view class="product-item-movable">
-            <image class="product-delete-icon" 
-              src="../../images/icon-delete.png" 
+            <image class="product-delete-icon"
+              src="../../images/icon-delete.png"
               data-productIndex="{{index}}"
               bindtap="showDeleteButton"></image>
             <view class="product-movable-item">
