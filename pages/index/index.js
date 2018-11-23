@@ -3,7 +3,6 @@ const app = getApp()
 
 Page({
   data: {
-    clientWidth: wx.getSystemInfoSync().screenWidth,
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -92,10 +91,19 @@ Page({
   },
 
   /**
+   * 处理touchstart事件
+   */
+  handleTouchStart(e) {
+    this.startX = e.changedTouches[0].pageX
+  },
+
+  /**
    * 处理touchend事件
    */
   handleTouchEnd(e) {
-    if(e.changedTouches[0].pageX - this.data.clientWidth < -30) {
+    if(e.changedTouches[0].pageX < this.startX && e.changedTouches[0].pageX - this.startX <= -30) {
+      this.showDeleteButton(e)
+    } else if(e.changedTouches[0].pageX > this.startX && e.changedTouches[0].pageX - this.startX < 30) {
       this.showDeleteButton(e)
     } else {
       this.hideDeleteButton(e)
