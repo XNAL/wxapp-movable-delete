@@ -1,33 +1,44 @@
-<view class="container">
+<view class="product-container">
+  <view class="title">通过movable-view实现左滑删除</view>
   <view class="product-list">
-    <view class="product-item" wx:for="{{productList}}" wx:for-item="product" wx:for-index="index" wx:key="{{item.code}}">
+    <view class="product-item" wx:for="{{productList}}" wx:for-index="index" wx:key="{{item.id}}">
       <movable-area>
-        <movable-view out-of-bounds="true" direction="horizontal" x="{{product.xmove}}" 
+        <movable-view out-of-bounds="true" direction="horizontal" x="{{item.xmove}}"
           inertia="true"
           data-productIndex="{{index}}"
           bindtouchstart="handleTouchStart"
           bindtouchend="handleTouchEnd"
           bindchange="handleMovableChange">
-          <view class="product-item-movable">
-            <image class="product-delete-icon"
-              src="../../images/icon-delete.png"
-              data-productIndex="{{index}}"
-              bindtap="showDeleteButton"></image>
+          <view class="product-item-wrap">
             <view class="product-movable-item">
-              <view class="product-movable-item-name">{{product.name}}</view>
-              <view class="product-movable-item-code">{{product.code}}</view>
+              <view class="product-movable-item-name">{{item.name}}</view>
+              <view class="product-movable-item-code">{{item.code}}</view>
             </view>
             <view class="product-movable-item product-movable-item-amount">
-              <input type="number" class="product-movable-input" 
-                value="{{product.amount}}"
-                data-productIndex="{{index}}"
-                bindinput="handelInput" maxlength="4"/>
-              <text>万</text>
+              <text class="amount">{{item.amount}}</text>
+              <text class="unit">万</text>
             </view>
           </view>
         </movable-view>
       </movable-area>
-      <view class="delete-btn" data-productIndex="{{index}}" bindtap="handleDeleteProduct">删除</view>
+      <view class="delete-btn" data-id="{{item.id}}" bindtap="handleDeleteProduct">删除</view>
+    </view>
+  </view>
+  <view class="title">通过Touch事件实现左滑删除</view>
+  <view class="product-list">
+    <view class="product-item" wx:for="{{slideProductList}}" wx:for-index="index" wx:key="{{item.id}}">
+      <slide-delete pid="{{item.id}}" bindaction="handleSlideDelete" wx:key="{{item.id}}">
+        <view class="product-item-wrap">
+          <view class="product-movable-item">
+            <view class="product-movable-item-name">{{item.name}}</view>
+            <view class="product-movable-item-code">{{item.code}}</view>
+          </view>
+          <view class="product-movable-item product-movable-item-amount">
+            <text class="amount">{{item.amount}}</text>
+            <text class="unit">万</text>
+          </view>
+        </view>
+      </slide-delete>
     </view>
   </view>
 </view>

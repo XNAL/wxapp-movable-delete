@@ -1,1 +1,6 @@
-{}
+{
+  "navigationBarTitleText": "滑动删除",
+  "usingComponents": {
+    "slide-delete": "../../components/slide-delete/index"
+  }
+}

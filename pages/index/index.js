@@ -8,19 +8,42 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     productList: [
       {
+        id: 1,
         name: '产品一',
         code: 100001,
-        amount: 0
+        amount: 1
       },
       {
+        id: 2,
         name: '产品二',
         code: 100002,
         amount: 5
       },
       {
+        id: 3,
         name: '产品三',
         code: 300001,
         amount: 10
+      }
+    ],
+    slideProductList: [
+      {
+        id: 4,
+        name: '产品五',
+        code: 400001,
+        amount: 101
+      },
+      {
+        id: 5,
+        name: '产品六',
+        code: 500002,
+        amount: 500
+      },
+      {
+        id: 6,
+        name: '产品七',
+        code: 600001,
+        amount: 110
       }
     ]
   },
@@ -76,18 +99,32 @@ Page({
   /**
    * 删除产品
    */
-  handleDeleteProduct: function (e) {
-    let productIndex = e.currentTarget.dataset.productindex
+  handleDeleteProduct: function ({ currentTarget: { dataset: { id } } }) {
     let productList = this.data.productList
+    let productIndex = productList.findIndex(item => item.id = id)
 
     productList.splice(productIndex, 1)
 
     this.setData({
-      productList: productList
+      productList
     })
     if (productList[productIndex]) {
       this.setXmove(productIndex, 0)
     }
+  },
+
+  /**
+   * slide-delete 删除产品
+   */
+  handleSlideDelete({ detail: { id } }) {
+    let slideProductList = this.data.slideProductList
+    let productIndex = slideProductList.findIndex(item => item.id = id)
+
+    slideProductList.splice(productIndex, 1)
+
+    this.setData({
+      slideProductList
+    })
   },
 
   /**

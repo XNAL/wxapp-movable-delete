@@ -1,8 +1,21 @@
-.product-list{
-  margin-top: 100rpx;
+.title {
+  margin: 60rpx 0 30rpx;
+  font-size: 40rpx;
+  text-align: center;
+  font-weight: bold;
+  color: #383A3D;
 }
 
 .product-list .product-item {
+  position: relative;
+  width: 100vw;
+  border-bottom: 2rpx solid #E9E9E9;
+  box-sizing: border-box;
+  background: #fff;
+  z-index: 999;
+}
+
+.slide-product-list .slide-product-item {
   position: relative;
   width: 100vw;
   border-bottom: 2rpx solid #E9E9E9;
@@ -38,7 +51,7 @@
   text-align: center;
 }
 
-.product-list .product-item-movable {
+.product-list .product-item-wrap {
   position: relative;
   display: flex;
   align-items: center;
@@ -46,19 +59,12 @@
   box-sizing: border-box;
 }
 
-.product-list .product-item-movable .product-delete-icon {
-  flex: 0 0 auto;
-  margin-right: 18rpx;
-  width: 44rpx;
-  height: 44rpx;
-}
-
-.product-list .product-item-movable .product-movable-item {
+.product-list .product-item-wrap .product-movable-item {
   flex: 1;
   overflow: hidden;
 }
 
-.product-list .product-item-movable .product-movable-item-name {
+.product-list .product-item-wrap .product-movable-item-name {
   font-family: PingFangSC-Regular;
   font-size: 28rpx;
   color: #71747A;
@@ -69,36 +75,30 @@
   text-overflow: ellipsis;
 }
 
-.product-list .product-item-movable .product-movable-item-code {
+.product-list .product-item-wrap .product-movable-item-code {
   font-family: PingFangSC-Regular;
   font-size: 24rpx;
   color: #969AA3;
 }
 
-.product-list .product-item-movable .product-movable-item-amount {
+.product-list .product-item-wrap .product-movable-item-amount {
   flex: 0 0 auto;
   padding-right: 80rpx;
   position: relative;
 }
 
-.product-list .product-item-movable .product-movable-item-amount input {
-  padding: 10rpx;
-  opacity: 0.8;
-  background: #FFFFFF;
-  width: 160rpx;
-  border: 2rpx solid #E0E1E3;
-  font-family: PingFangSC-Semibold;
+.product-list .product-item-wrap .product-movable-item-amount .amount {
+  width: 120rpx;
   font-size: 28rpx;
   color: #383A3D;
   line-height: 60rpx;
 }
 
-.product-list .product-item-movable .product-movable-item-amount text {
+.product-list .product-item-wrap .product-movable-item-amount .unit {
   position: absolute;
   top: 0;
   right: 30rpx;
-  font-family: PingFangSC-Semibold;
   font-size: 28rpx;
-  color: #383A3D;
+  color: #969AA3;
   line-height: 60rpx;
 }

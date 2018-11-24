@@ -1,0 +1,36 @@
+.wrap {
+  position: relative;
+}
+
+.wrap .content {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+}
+
+.wrap .content.animate {
+  transition: transform 0.3s;
+}
+
+.wrap .action-wrap {
+  position: absolute;
+  display: flex;
+  width: 120rpx;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.wrap .action {
+  display: flex;
+  width: 120rpx;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background: #E66671;
+}
+
+.wrap .action text {
+  font-size: 24rpx;
+  color: #fff;
+}
