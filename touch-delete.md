@@ -1,6 +1,6 @@
 ## 前言
 
-之前写过一篇[微信小程序使用movable-view实现左滑删除功能](http://www.tdon.site/post/22)，有同学使用了这种方案并提出我之前没有发现的bug（现在bug已进行了修复），感谢。
+之前写过一篇[微信小程序使用movable-view实现左滑删除功能](https://github.com/XNAL/wxapp-movable-delete/blob/master/movable-delete.md)，有同学使用了这种方案并提出我之前没有发现的bug（现在bug已进行了修复😏），感谢🙏。
 
 有同学问了如果不使用`movable-view`的话如何来实现左滑删除？那这次就写一下如何只使用`touch`事件来实现左滑删除。
 
