@@ -97,6 +97,26 @@ Page({
   },
 
   /**
+   * 处理touchstart事件
+   */
+  handleTouchStart(e) {
+    this.startX = e.touches[0].pageX
+  },
+
+  /**
+   * 处理touchend事件
+   */
+  handleTouchEnd(e) {
+    if(e.touches[0].pageX < this.startX && e.touches[0].pageX - this.startX <= -30) {
+      this.showDeleteButton(e)
+    } else if(e.touches[0].pageX > this.startX && e.touches[0].pageX - this.startX < 30) {
+      this.showDeleteButton(e)
+    } else {
+      this.hideDeleteButton(e)
+    }
+  },
+
+  /**
    * 删除产品
    */
   handleDeleteProduct: function ({ currentTarget: { dataset: { id } } }) {
@@ -125,25 +145,5 @@ Page({
     this.setData({
       slideProductList
     })
-  },
-
-  /**
-   * 处理touchstart事件
-   */
-  handleTouchStart(e) {
-    this.startX = e.changedTouches[0].pageX
-  },
-
-  /**
-   * 处理touchend事件
-   */
-  handleTouchEnd(e) {
-    if(e.changedTouches[0].pageX < this.startX && e.changedTouches[0].pageX - this.startX <= -30) {
-      this.showDeleteButton(e)
-    } else if(e.changedTouches[0].pageX > this.startX && e.changedTouches[0].pageX - this.startX < 30) {
-      this.showDeleteButton(e)
-    } else {
-      this.hideDeleteButton(e)
-    }
   }
 })
