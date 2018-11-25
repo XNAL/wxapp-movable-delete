@@ -11,10 +11,12 @@
 ## 效果图
 
 - movable-view左滑删除效果图
+
 ![movable-view左滑删除效果图](https://github.com/XNAL/wxapp-movable-delete/blob/master/screenshorts/moveable.gif)
 
 
 
 - touch事件左滑删除效果图
+
 ![touch事件左滑删除效果图](https://github.com/XNAL/wxapp-movable-delete/blob/master/screenshorts/touch-delete.gif)
 
