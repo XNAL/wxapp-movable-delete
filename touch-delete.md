@@ -5,13 +5,6 @@
 有同学问了如果不使用`movable-view`的话如何来实现左滑删除？那这次就写一下如何只使用`touch`事件来实现左滑删除。
 
 
-
-## 源码
-
-[Talk is cheap. Show me the code.](https://github.com/XNAL/wxapp-movable-delete)
-
-
-
 ## 实现原理
 
 1. 此次组件需要处理`touchstart`、`touchmove`和`touchend`三个`touch`事件

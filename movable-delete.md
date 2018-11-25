@@ -1,6 +1,6 @@
 ## 前言
 
-微信小程序官方没有自带的左滑删除功能，一般开发的时候都是使用touch事件来开发自定义的左滑删除，处理起来会有点麻烦。微信小程序出了[movable-view(点击查看官方文档)](https://developers.weixin.qq.com/miniprogram/dev/component/movable-view.html)之后，在某些特殊情况下可以使用`movable-view`来开发左滑删除功能，会比较简单一些。
+微信小程序官方没有自带的左滑删除功能，一般开发的时候都是使用touch事件来开发自定义的左滑删除，处理起来会有点麻烦。微信小程序出了[movable-view(点击查看官方文档)](https://developers.weixin.qq.com/miniprogram/dev/component/movable-view.html)之后，就可以使用`movable-view`来开发左滑删除的功能了。
 
 
 ## 实现原理
@@ -18,9 +18,12 @@
 
 ## 效果图
 
+> 左滑效果
+
 ![左滑](https://github.com/XNAL/wxapp-movable-delete/blob/master/screenshorts/moveable.gif)
 
 
+> 删除效果
 
 ![删除](https://github.com/XNAL/wxapp-movable-delete/blob/master/screenshorts/moveable-2.gif)
 
