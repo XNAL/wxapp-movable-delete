@@ -121,7 +121,7 @@ Page({
    */
   handleDeleteProduct: function ({ currentTarget: { dataset: { id } } }) {
     let productList = this.data.productList
-    let productIndex = productList.findIndex(item => item.id = id)
+    let productIndex = productList.findIndex(item => item.id === id)
 
     productList.splice(productIndex, 1)
 
